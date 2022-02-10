@@ -7,6 +7,12 @@ const initialState = {
       name: "Falafel",
       price: 10,
       orderedQuantity: 0
+    },
+    {
+      category: "food",
+      name: "toto",
+      price: 10,
+      orderedQuantity: 1
     }
   ]
 };
@@ -15,12 +21,16 @@ const orderList = createSlice({
   name: "orderList",
   initialState,
   reducers: {
-    increaseQuantityBy(state, action) {
-      const { foodName, quantityToIncrease } = action.payload;
+    addItemToOrderList(state, action) {
+      const item = action.payload;
+      state.itemsOrdered.push(item);
+    },
+    increaseQuantity(state, action) {
+      const foodName = action.payload;
 
       state.itemsOrdered.forEach((item, itemIndex) => {
         if (foodName === item.name) {
-          state.itemsOrdered[itemIndex].orderedQuantity += quantityToIncrease;
+          state.itemsOrdered[itemIndex].orderedQuantity += 1;
         }
       });
     },
@@ -28,7 +38,7 @@ const orderList = createSlice({
       const foodName = action.payload;
 
       state.itemsOrdered.forEach((item, itemIndex) => {
-        if (foodName === item.name) {
+        if (foodName === item.name && item.orderedQuantity > 0) {
           state.itemsOrdered[itemIndex].orderedQuantity -= 1;
         }
       });
@@ -49,7 +59,7 @@ const orderList = createSlice({
 });
 
 export const {
-  increaseQuantityBy,
+  increaseQuantity,
   decreaseQuantity,
   removeItemFromOrderList,
   clearOrderList
