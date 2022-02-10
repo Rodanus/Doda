@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   foodMenu: [
     {
-      categoryName: "name",
+      categoryName: "food",
       items: [
         {
           category: "food",
