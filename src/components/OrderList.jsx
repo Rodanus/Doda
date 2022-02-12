@@ -23,12 +23,15 @@ function OrderList() {
     dispatch(labelAllAsUnordered());
   };
 
+  const totalItemPrice = (price, quantity) => `$${price * quantity}`;
+
   return (
     <div>
       {itemsOrdered.map(item => (
         <div>
           <p>{item.name}</p>
           <p>{item.orderedQuantity}</p>
+          <p>{totalItemPrice(item.price, item.orderedQuantity)}</p>
           <button onClick={() => dispatch(increaseQuantity(item.name))}>
             Increase
           </button>
