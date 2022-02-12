@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { increaseOrderQuantityBy, toggleIsOrdered } from "../store/foodMenu";
 import { increaseQuantityBy, addItemToOrderList } from "../store/orderList";
+import { increasePriceBy } from "../store/totalOrderPrice";
 import { useDispatch } from "react-redux";
 
 function Card({ item }) {
@@ -51,6 +52,7 @@ function Card({ item }) {
         })
       );
     }
+    dispatch(increasePriceBy(item.price * quantityToIncrease));
     setOrderAmount(0);
   };
   return (

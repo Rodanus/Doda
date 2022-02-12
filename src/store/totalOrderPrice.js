@@ -15,10 +15,14 @@ const totalOrderPrice = createSlice({
     decreasePriceBy(state, action) {
       const priceAmountToDecrease = action.payload;
       state.totalPrice -= priceAmountToDecrease;
+    },
+    clearTotalPrice(state) {
+      state.totalPrice = 0;
     }
   }
 });
 
-export const { increasePriceBy, decreasePriceBy } = totalOrderPrice.actions;
+export const { increasePriceBy, decreasePriceBy, clearTotalPrice } =
+  totalOrderPrice.actions;
 
 export default totalOrderPrice.reducer;

@@ -1,52 +1,27 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  increaseQuantity,
-  decreaseQuantity,
-  removeItemFromOrderList,
-  clearOrderList
-} from "../store/orderList";
-import { toggleIsOrdered, labelAllAsUnordered } from "../store/foodMenu";
+import { clearOrderList } from "../store/orderList";
+import { labelAllAsUnordered } from "../store/foodMenu";
+import OrderListCards from "./OrderListCards";
+import { clearTotalPrice } from "../store/totalOrderPrice";
 
 function OrderList() {
   const { itemsOrdered } = useSelector(state => state.orderList);
-  const dispatch = useDispatch();
+  const totalPrice = useSelector(state => state.totalOrderPrice.totalPrice);
 
-  const handleRemovingItemFromOrderList = (foodCategory, foodName) => {
-    dispatch(toggleIsOrdered({ foodCategory, foodName, isOrdered: false }));
-    dispatch(removeItemFromOrderList(foodName));
-  };
+  const dispatch = useDispatch();
 
   const handleClearingOrderList = () => {
     dispatch(clearOrderList());
     dispatch(labelAllAsUnordered());
+    dispatch(clearTotalPrice());
   };
-
-  const totalItemPrice = (price, quantity) => `$${price * quantity}`;
 
   return (
     <div>
-      {itemsOrdered.map(item => (
-        <div>
-          <p>{item.name}</p>
-          <p>{item.orderedQuantity}</p>
-          <p>{totalItemPrice(item.price, item.orderedQuantity)}</p>
-          <button onClick={() => dispatch(increaseQuantity(item.name))}>
-            Increase
-          </button>
-          <button onClick={() => dispatch(decreaseQuantity(item.name))}>
-            decrease
-          </button>
-          <button
-            onClick={() =>
-              handleRemovingItemFromOrderList(item.category, item.name)
-            }
-          >
-            remove
-          </button>
-        </div>
-      ))}
+      <OrderListCards itemsOrdered={itemsOrdered} />
+      <p>Total Price: {totalPrice}</p>
       <button onClick={() => handleClearingOrderList()}>clear</button>
       <Link to="/order">Order page</Link>
     </div>
