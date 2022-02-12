@@ -7,10 +7,16 @@ import {
   removeItemFromOrderList,
   clearOrderList
 } from "../store/orderList";
+import { toggleIsOrdered } from "../store/foodMenu";
 
 function OrderList() {
   const { itemsOrdered } = useSelector(state => state.orderList);
   const dispatch = useDispatch();
+
+  const handleRemovingItemFromOrderList = (foodCategory, foodName) => {
+    dispatch(toggleIsOrdered({ foodCategory, foodName, isOrdered: false }));
+    dispatch(removeItemFromOrderList(foodName));
+  };
 
   return (
     <div>
@@ -24,7 +30,11 @@ function OrderList() {
           <button onClick={() => dispatch(decreaseQuantity(item.name))}>
             decrease
           </button>
-          <button onClick={() => dispatch(removeItemFromOrderList(item.name))}>
+          <button
+            onClick={() =>
+              handleRemovingItemFromOrderList(item.category, item.name)
+            }
+          >
             remove
           </button>
         </div>

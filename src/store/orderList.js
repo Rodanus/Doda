@@ -1,20 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  itemsOrdered: [
-    {
-      category: "food",
-      name: "Falafel",
-      price: 10,
-      orderedQuantity: 0
-    },
-    {
-      category: "food",
-      name: "toto",
-      price: 10,
-      orderedQuantity: 1
-    }
-  ]
+  itemsOrdered: []
 };
 
 const orderList = createSlice({

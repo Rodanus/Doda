@@ -44,9 +44,9 @@ function Card({ item }) {
       );
       dispatch(
         addItemToOrderList({
-          foodCategory,
+          category: foodCategory,
           name: foodName,
-          foodPrice,
+          price: foodPrice,
           orderedQuantity: orderAmount
         })
       );
