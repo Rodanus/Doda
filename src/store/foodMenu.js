@@ -61,11 +61,22 @@ const foodMenu = createSlice({
           });
         }
       });
+    },
+    labelAllAsUnordered(state) {
+      state.foodMenu.forEach((category, foodMenuIndex) => {
+        category.items.forEach((item, itemIndex) => {
+          state.foodMenu[foodMenuIndex].items[itemIndex].isOrdered = false;
+        });
+      });
     }
   }
 });
 
-export const { increaseOrderQuantityBy, decreaseQuantity, toggleIsOrdered } =
-  foodMenu.actions;
+export const {
+  increaseOrderQuantityBy,
+  decreaseQuantity,
+  toggleIsOrdered,
+  labelAllAsUnordered
+} = foodMenu.actions;
 
 export default foodMenu.reducer;

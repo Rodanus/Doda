@@ -7,7 +7,7 @@ import {
   removeItemFromOrderList,
   clearOrderList
 } from "../store/orderList";
-import { toggleIsOrdered } from "../store/foodMenu";
+import { toggleIsOrdered, labelAllAsUnordered } from "../store/foodMenu";
 
 function OrderList() {
   const { itemsOrdered } = useSelector(state => state.orderList);
@@ -16,6 +16,11 @@ function OrderList() {
   const handleRemovingItemFromOrderList = (foodCategory, foodName) => {
     dispatch(toggleIsOrdered({ foodCategory, foodName, isOrdered: false }));
     dispatch(removeItemFromOrderList(foodName));
+  };
+
+  const handleClearingOrderList = () => {
+    dispatch(clearOrderList());
+    dispatch(labelAllAsUnordered());
   };
 
   return (
@@ -39,7 +44,7 @@ function OrderList() {
           </button>
         </div>
       ))}
-      <button onClick={() => dispatch(clearOrderList())}>clear</button>
+      <button onClick={() => handleClearingOrderList()}>clear</button>
       <Link to="/order">Order page</Link>
     </div>
   );
