@@ -9,6 +9,7 @@ function Order() {
     <div>
       <Cards foodMenu={foodMenu} />
       <Link to="/order-list">Order list</Link>
+      <Link to="/">Home</Link>
     </div>
   );
 }
