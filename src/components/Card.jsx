@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { increaseOrderQuantityBy } from "../store/foodMenu";
+import { increaseOrderQuantityBy, toggleIsOrdered } from "../store/foodMenu";
+import { increaseQuantityBy, addItemToOrderList } from "../store/orderList";
 import { useDispatch } from "react-redux";
 
 function Card({ item }) {
@@ -17,14 +18,39 @@ function Card({ item }) {
     }
   };
 
-  const handleItemOrdering = (foodCategory, foodName, quantityToIncrease) => {
-    dispatch(
-      increaseOrderQuantityBy({
-        foodCategory,
-        foodName,
-        quantityToIncrease
-      })
-    );
+  const handleItemOrdering = (
+    foodCategory,
+    foodName,
+    quantityToIncrease,
+    foodPrice,
+    isOrdered
+  ) => {
+    if (isOrdered) {
+      dispatch(
+        increaseOrderQuantityBy({
+          foodCategory,
+          foodName,
+          quantityToIncrease
+        })
+      );
+      dispatch(increaseQuantityBy({ foodName, quantityToIncrease }));
+    } else {
+      dispatch(
+        toggleIsOrdered({
+          foodCategory,
+          foodName,
+          isOrdered: orderAmount > 0
+        })
+      );
+      dispatch(
+        addItemToOrderList({
+          foodCategory,
+          name: foodName,
+          foodPrice,
+          orderedQuantity: orderAmount
+        })
+      );
+    }
     setOrderAmount(0);
   };
   return (
@@ -38,7 +64,13 @@ function Card({ item }) {
 
         <button
           onClick={() =>
-            handleItemOrdering(item.category, item.name, orderAmount)
+            handleItemOrdering(
+              item.category,
+              item.name,
+              orderAmount,
+              item.price,
+              item.isOrdered
+            )
           }
         >
           Order

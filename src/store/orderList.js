@@ -25,6 +25,15 @@ const orderList = createSlice({
       const item = action.payload;
       state.itemsOrdered.push(item);
     },
+    increaseQuantityBy(state, action) {
+      const { foodName, quantityToIncrease } = action.payload;
+
+      state.itemsOrdered.forEach((item, itemIndex) => {
+        if (foodName === item.name) {
+          state.itemsOrdered[itemIndex].orderedQuantity += quantityToIncrease;
+        }
+      });
+    },
     increaseQuantity(state, action) {
       const foodName = action.payload;
 
@@ -59,6 +68,8 @@ const orderList = createSlice({
 });
 
 export const {
+  addItemToOrderList,
+  increaseQuantityBy,
   increaseQuantity,
   decreaseQuantity,
   removeItemFromOrderList,

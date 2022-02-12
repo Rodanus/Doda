@@ -47,10 +47,25 @@ const foodMenu = createSlice({
           });
         }
       });
+    },
+    toggleIsOrdered(state, action) {
+      const { foodCategory, foodName, isOrdered } = action.payload;
+
+      state.foodMenu.forEach((category, foodMenuIndex) => {
+        if (category.categoryName === foodCategory) {
+          category.items.forEach((item, itemIndex) => {
+            if (foodName === item.name) {
+              state.foodMenu[foodMenuIndex].items[itemIndex].isOrdered =
+                isOrdered;
+            }
+          });
+        }
+      });
     }
   }
 });
 
-export const { increaseOrderQuantityBy, decreaseQuantity } = foodMenu.actions;
+export const { increaseOrderQuantityBy, decreaseQuantity, toggleIsOrdered } =
+  foodMenu.actions;
 
 export default foodMenu.reducer;

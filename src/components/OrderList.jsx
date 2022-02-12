@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   increaseQuantity,
   decreaseQuantity,
@@ -15,7 +16,7 @@ function OrderList() {
     <div>
       {itemsOrdered.map(item => (
         <div>
-          <p>{item.category}</p>
+          <p>{item.name}</p>
           <p>{item.orderedQuantity}</p>
           <button onClick={() => dispatch(increaseQuantity(item.name))}>
             Increase
@@ -29,6 +30,7 @@ function OrderList() {
         </div>
       ))}
       <button onClick={() => dispatch(clearOrderList())}>clear</button>
+      <Link to="/order">Order page</Link>
     </div>
   );
 }
