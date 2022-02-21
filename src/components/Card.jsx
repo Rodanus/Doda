@@ -26,7 +26,7 @@ function Card({ item }) {
     foodPrice,
     isOrdered
   ) => {
-    if (isOrdered) {
+    if (isOrdered && quantityToIncrease > 0) {
       dispatch(
         increaseOrderQuantityBy({
           foodCategory,
@@ -35,7 +35,7 @@ function Card({ item }) {
         })
       );
       dispatch(increaseQuantityBy({ foodName, quantityToIncrease }));
-    } else {
+    } else if (quantityToIncrease > 0) {
       dispatch(
         toggleIsOrdered({
           foodCategory,
