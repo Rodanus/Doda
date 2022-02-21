@@ -8,6 +8,10 @@ const foodMenu = createSlice({
   name: "foodMenu",
   initialState,
   reducers: {
+    addFoodMenu(state, action) {
+      const foodMenu = action.payload;
+      state.foodMenu = foodMenu;
+    },
     increaseOrderQuantityBy(state, action) {
       const { foodCategory, foodName, quantityToIncrease } = action.payload;
       state.foodMenu.forEach((category, foodMenuIndex, foodMenuArr) => {
@@ -60,6 +64,7 @@ const foodMenu = createSlice({
 });
 
 export const {
+  addFoodMenu,
   increaseOrderQuantityBy,
   decreaseQuantity,
   toggleIsOrdered,
