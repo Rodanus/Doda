@@ -59,6 +59,7 @@ function Card({ item }) {
     <div>
       <>
         <p>{item.name}</p>
+        <p>${item.price}</p>
         <p>{orderAmount}</p>
         <button onClick={() => handleDecreaseOrderQuantity()}>Decrease</button>
 
