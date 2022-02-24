@@ -29,7 +29,7 @@ function App() {
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<Home />} />
         <Route path="order" element={<Order />} />
-        <Route path="order/order-list" element={<OrderList />} />
+        {/* <Route path="order/order-list" element={<OrderList />} /> */}
       </Routes>
       {state?.backgroundLocation && (
         <Routes>
