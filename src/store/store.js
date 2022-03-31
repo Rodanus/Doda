@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import foodMenuReducer from "./foodMenu";
+import productsReducer from "./products";
 import orderListReducer from "./orderList";
 import totalOrderPriceReducer from "./totalOrderPrice";
 
 export default configureStore({
   reducer: {
-    foodMenu: foodMenuReducer,
+    products: productsReducer,
     orderList: orderListReducer,
     totalOrderPrice: totalOrderPriceReducer
   }

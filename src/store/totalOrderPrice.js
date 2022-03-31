@@ -10,11 +10,11 @@ const totalOrderPrice = createSlice({
   reducers: {
     increasePriceBy(state, action) {
       const priceAmountToIncrease = action.payload;
-      state.totalPrice += priceAmountToIncrease;
+      state.totalPrice = +(state.totalPrice + priceAmountToIncrease).toFixed(2);
     },
     decreasePriceBy(state, action) {
       const priceAmountToDecrease = action.payload;
-      state.totalPrice -= priceAmountToDecrease;
+      state.totalPrice = +(state.totalPrice - priceAmountToDecrease).toFixed(2);
     },
     clearTotalPrice(state) {
       state.totalPrice = 0;

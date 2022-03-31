@@ -4,11 +4,11 @@ import { Link, useLocation } from "react-router-dom";
 import Cards from "../components/Cards";
 
 function Order() {
-  const foodMenu = useSelector(store => store.foodMenu.foodMenu);
+  const products = useSelector(store => store.products.products);
   const location = useLocation();
   return (
     <div>
-      <Cards foodMenu={foodMenu} />
+      <Cards products={products} />
       <Link state={{ backgroundLocation: location }} to="order-list">
         Order list
       </Link>

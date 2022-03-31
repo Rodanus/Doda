@@ -1,14 +1,12 @@
 import React from "react";
 import Card from "./Card";
 
-function Cards({ foodMenu }) {
+function Cards({ products }) {
   return (
     <div>
-      {foodMenu.map(category => (
+      {products.map(item => (
         <div>
-          {category.items.map(item => (
-            <Card item={item} />
-          ))}
+          <Card item={item} />
         </div>
       ))}
     </div>

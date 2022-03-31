@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { increaseOrderQuantityBy, toggleIsOrdered } from "../store/foodMenu";
 import { increaseQuantityBy, addItemToOrderList } from "../store/orderList";
 import { increasePriceBy } from "../store/totalOrderPrice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Card({ item }) {
   const [orderAmount, setOrderAmount] = useState(0);
+
+  const { itemsOrdered } = useSelector(state => state.orderList);
 
   const dispatch = useDispatch();
 
@@ -19,35 +20,32 @@ function Card({ item }) {
     }
   };
 
+  const isProductOrdered = productId => {
+    const orderedProduct = itemsOrdered.filter(
+      product => product.id === productId
+    );
+
+    return orderedProduct.length > 0;
+  };
+
   const handleItemOrdering = (
-    foodCategory,
-    foodName,
+    productName,
+    productCategory,
+    productId,
     quantityToIncrease,
-    foodPrice,
-    isOrdered
+    productPrice
   ) => {
-    if (isOrdered && quantityToIncrease > 0) {
-      dispatch(
-        increaseOrderQuantityBy({
-          foodCategory,
-          foodName,
-          quantityToIncrease
-        })
-      );
-      dispatch(increaseQuantityBy({ foodName, quantityToIncrease }));
+    const isProductOrderedBefore = isProductOrdered(productId);
+
+    if (isProductOrderedBefore && quantityToIncrease > 0) {
+      dispatch(increaseQuantityBy({ productId, quantityToIncrease }));
     } else if (quantityToIncrease > 0) {
       dispatch(
-        toggleIsOrdered({
-          foodCategory,
-          foodName,
-          isOrdered: orderAmount > 0
-        })
-      );
-      dispatch(
         addItemToOrderList({
-          category: foodCategory,
-          name: foodName,
-          price: foodPrice,
+          id: productId,
+          category: productCategory,
+          title: productName,
+          price: productPrice,
           orderedQuantity: orderAmount
         })
       );
@@ -58,8 +56,8 @@ function Card({ item }) {
   return (
     <div>
       <>
-        <p>{item.name}</p>
-        <p>${item.price}</p>
+        <p>{item.title}</p>
+        <p>${+item.price.toFixed(2)}</p>
         <p>{orderAmount}</p>
         <button onClick={() => handleDecreaseOrderQuantity()}>Decrease</button>
 
@@ -68,11 +66,11 @@ function Card({ item }) {
         <button
           onClick={() =>
             handleItemOrdering(
+              item.title,
               item.category,
-              item.name,
+              item.id,
               orderAmount,
-              item.price,
-              item.isOrdered
+              item.price
             )
           }
         >

@@ -13,37 +13,37 @@ const orderList = createSlice({
       state.itemsOrdered.push(item);
     },
     increaseQuantityBy(state, action) {
-      const { foodName, quantityToIncrease } = action.payload;
+      const { productId, quantityToIncrease } = action.payload;
 
       state.itemsOrdered.forEach((item, itemIndex) => {
-        if (foodName === item.name) {
+        if (productId === item.id) {
           state.itemsOrdered[itemIndex].orderedQuantity += quantityToIncrease;
         }
       });
     },
     increaseQuantity(state, action) {
-      const foodName = action.payload;
+      const productId = action.payload;
 
       state.itemsOrdered.forEach((item, itemIndex) => {
-        if (foodName === item.name) {
+        if (productId === item.id) {
           state.itemsOrdered[itemIndex].orderedQuantity += 1;
         }
       });
     },
     decreaseQuantity(state, action) {
-      const foodName = action.payload;
+      const productId = action.payload;
 
       state.itemsOrdered.forEach((item, itemIndex) => {
-        if (foodName === item.name && item.orderedQuantity > 0) {
+        if (productId === item.id && item.orderedQuantity > 0) {
           state.itemsOrdered[itemIndex].orderedQuantity -= 1;
         }
       });
     },
     removeItemFromOrderList(state, action) {
-      const foodName = action.payload;
+      const productId = action.payload;
 
       state.itemsOrdered.forEach((item, itemIndex) => {
-        if (foodName === item.name) {
+        if (productId === item.id) {
           state.itemsOrdered.splice(itemIndex, 1);
         }
       });

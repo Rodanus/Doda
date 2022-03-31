@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearOrderList } from "../store/orderList";
-import { labelAllAsUnordered } from "../store/foodMenu";
 import OrderListCards from "./OrderListCards";
 import { clearTotalPrice } from "../store/totalOrderPrice";
 
@@ -14,14 +13,13 @@ function OrderList() {
 
   const handleClearingOrderList = () => {
     dispatch(clearOrderList());
-    dispatch(labelAllAsUnordered());
     dispatch(clearTotalPrice());
   };
 
   return (
     <div>
       <OrderListCards itemsOrdered={itemsOrdered} />
-      <p>Total Price: {totalPrice}</p>
+      <p>Total Price: ${totalPrice}</p>
       <button onClick={() => handleClearingOrderList()}>clear</button>
       <Link to="/order">Order page</Link>
     </div>

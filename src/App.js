@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Order from "./pages/Order";
 import OrderList from "./components/OrderList";
-import { addFoodMenu } from "./store/foodMenu";
+import { addProducts } from "./store/products";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
@@ -16,10 +16,10 @@ function App() {
 
   useEffect(() => {
     if (!firstRender) {
-      fetch("https://d-restaurant-38c89-default-rtdb.firebaseio.com/.json")
+      fetch("https://fakestoreapi.com/products/")
         .then(res => res.json())
         .then(res => {
-          dispatch(addFoodMenu(res.foodMenu));
+          dispatch(addProducts(res));
           firstRender = true;
         });
     }
