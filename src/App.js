@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 import "./App.css";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
 
 let firstRender = false;
 function App() {
@@ -29,6 +31,8 @@ function App() {
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<Home />} />
         <Route path="order" element={<Order />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
         {/* <Route path="order/order-list" element={<OrderList />} /> */}
       </Routes>
       {state?.backgroundLocation && (
