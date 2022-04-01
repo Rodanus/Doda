@@ -7,13 +7,13 @@ function Order() {
   const products = useSelector(store => store.products.products);
   const location = useLocation();
   return (
-    <div>
+    <main>
       <Cards products={products} />
       <Link state={{ backgroundLocation: location }} to="order-list">
         Order list
       </Link>
       <Link to="/">Home</Link>
-    </div>
+    </main>
   );
 }
 

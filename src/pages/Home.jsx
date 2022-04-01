@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import tw, { styled, css } from "twin.macro";
 import HomepageBg from "../images/homepage-bg.jpg";
 
-const HomepageContainer = styled.div(() => [
+const HomepageContainer = styled.main(() => [
   tw`h-screen w-screen flex flex-col justify-center`,
   css`
     background: url(${HomepageBg}) no-repeat;
@@ -30,7 +30,7 @@ const OrderButton = styled(Link)(() => [
 
 function Home() {
   return (
-    <HomepageContainer>
+    <HomepageContainer className="homepage-container">
       <Overlay />
       <CTAContainer>
         <HomepageTitle>
