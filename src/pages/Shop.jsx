@@ -3,18 +3,18 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import Cards from "../components/Cards";
 
-function Order() {
+function Shop() {
   const products = useSelector(store => store.products.products);
   const location = useLocation();
   return (
     <main>
       <Cards products={products} />
       <Link state={{ backgroundLocation: location }} to="order-list">
-        Order list
+        Cart
       </Link>
       <Link to="/">Home</Link>
     </main>
   );
 }
 
-export default Order;
+export default Shop;

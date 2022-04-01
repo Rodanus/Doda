@@ -37,7 +37,7 @@ function Home() {
           Shopping from the comfort of your{" "}
           <HomepageTitleCTAWord>bed</HomepageTitleCTAWord>.
         </HomepageTitle>
-        <OrderButton to="order">start shopping</OrderButton>
+        <OrderButton to="shop">start shopping</OrderButton>
       </CTAContainer>
     </HomepageContainer>
   );

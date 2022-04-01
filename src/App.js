@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
-import Order from "./pages/Order";
+import Shop from "./pages/Shop";
 import OrderList from "./components/OrderList";
 import { addProducts } from "./store/products";
 import { useDispatch } from "react-redux";
@@ -32,14 +32,14 @@ function App() {
       <Nav />
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<Home />} />
-        <Route path="order" element={<Order />} />
+        <Route path="shop" element={<Shop />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         {/* <Route path="order/order-list" element={<OrderList />} /> */}
       </Routes>
       {state?.backgroundLocation && (
         <Routes>
-          <Route path="order/order-list" element={<OrderList />} />
+          <Route path="shop/order-list" element={<OrderList />} />
         </Routes>
       )}
     </div>

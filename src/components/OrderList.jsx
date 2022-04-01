@@ -21,7 +21,7 @@ function OrderList() {
       <OrderListCards itemsOrdered={itemsOrdered} />
       <p>Total Price: ${totalPrice}</p>
       <button onClick={() => handleClearingOrderList()}>clear</button>
-      <Link to="/order">Order page</Link>
+      <Link to="/shop">Shop page</Link>
     </div>
   );
 }
