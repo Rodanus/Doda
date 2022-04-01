@@ -35,7 +35,7 @@ function App() {
         <Route path="shop" element={<Shop />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
-        {/* <Route path="order/order-list" element={<OrderList />} /> */}
+        <Route path="shop/order-list" element={<OrderList />} />
       </Routes>
       {state?.backgroundLocation && (
         <Routes>
