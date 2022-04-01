@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import "./App.css";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import Nav from "./components/Nav";
 
 let firstRender = false;
 function App() {
@@ -28,6 +29,7 @@ function App() {
   });
   return (
     <div className="App">
+      <Nav />
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<Home />} />
         <Route path="order" element={<Order />} />
