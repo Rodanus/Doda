@@ -19,13 +19,13 @@ const Overlay = styled.div(() => [
 ]);
 
 const HomepageTitle = styled.h1(() => [
-  tw`text-[64px] text-white relative z-10 mb-4`
+  tw`max-w-[740px] text-[60px] text-white font-bold relative z-10 mb-4`
 ]);
 
-const CTAContainer = styled.div(() => [tw``]);
+const HomepageTitleCTAWord = styled.span(() => [tw`font-black text-[#0097E0]`]);
 
 const OrderButton = styled(Link)(() => [
-  tw`relative z-10 bg-[#14131C] text-[#F3F3F3] text-[32px] capitalize rounded-full py-4 px-8 inline-block hover:bg-[#1A182D]`
+  tw`relative z-10 bg-[#0097E0] text-[#F3F3F3] text-[20px] font-bold capitalize rounded-full py-4 px-8 inline-block hover:bg-[#007EBB]`
 ]);
 
 function Home() {
@@ -33,8 +33,11 @@ function Home() {
     <HomepageContainer>
       <Overlay />
       <CTAContainer>
-        <HomepageTitle>D-Restaurant. Well, a Mini one...</HomepageTitle>
-        <OrderButton to="order">order now!</OrderButton>
+        <HomepageTitle>
+          Shopping from the comfort of your{" "}
+          <HomepageTitleCTAWord>bed</HomepageTitleCTAWord>.
+        </HomepageTitle>
+        <OrderButton to="order">start shopping</OrderButton>
       </CTAContainer>
     </HomepageContainer>
   );
