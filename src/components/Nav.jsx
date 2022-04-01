@@ -76,7 +76,7 @@ function Nav() {
             </NavLinkContainer>
           ))}
           <NavLinkContainer>
-            <NavLink to="cart">
+            <NavLink to="/shop/order-list">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="28.354"
