@@ -49,9 +49,9 @@ function Nav() {
               id="Doda"
               transform="translate(0 50)"
               fill="#0097e0"
-              font-size="53"
-              font-family="Rockwell-Bold, Rockwell"
-              font-weight="700"
+              fontSize="53"
+              fontFamily="Rockwell-Bold, Rockwell"
+              fontWeight="700"
             >
               <tspan x="0" y="0">
                 D
@@ -71,7 +71,7 @@ function Nav() {
 
         <NavLinks>
           {navLinks.map(linkElement => (
-            <NavLinkContainer>
+            <NavLinkContainer key={linkElement.title}>
               <NavLink to={linkElement.path}>{linkElement.title}</NavLink>
             </NavLinkContainer>
           ))}
