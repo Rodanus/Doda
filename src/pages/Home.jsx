@@ -4,13 +4,15 @@ import tw, { styled, css } from "twin.macro";
 import HomepageBg from "../images/homepage-bg.jpg";
 
 const HomepageContainer = styled.div(() => [
-  tw`h-screen w-screen flex flex-col justify-center items-center`,
+  tw`h-screen w-screen flex flex-col justify-center`,
   css`
     background: url(${HomepageBg}) no-repeat;
     background-position: center;
     background-size: cover;
   `
 ]);
+
+const CTAContainer = styled.div(() => [tw`container`]);
 
 const Overlay = styled.div(() => [
   tw`w-screen h-screen bg-black opacity-50 absolute`
