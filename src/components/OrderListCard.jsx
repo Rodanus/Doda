@@ -48,7 +48,6 @@ function OrderListCard({ item }) {
       <button
         onClick={() =>
           handleRemovingItemFromOrderList(
-            item.category,
             item.id,
             item.orderedQuantity,
             item.price
