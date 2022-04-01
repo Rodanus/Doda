@@ -13,7 +13,7 @@ const Navbar = styled.nav(() => [
 ]);
 const NavLinks = styled.ul(() => [tw`flex justify-between w-1/2`]);
 const NavLinkContainer = styled.li(() => []);
-const NavLink = styled(Link)(() => [tw`capitalize text-white text-lg`]);
+const NavLink = styled(Link)(() => [tw`capitalize text-black text-lg`]);
 
 function Nav() {
   const navLinks = [
@@ -86,7 +86,7 @@ function Nav() {
                 <path
                   id="shopping-cart"
                   d="M26,14.833,28.324,4.594A1.181,1.181,0,0,0,27.172,3.15H7.837L7.386.945A1.181,1.181,0,0,0,6.228,0H1.181A1.181,1.181,0,0,0,0,1.181v.788A1.181,1.181,0,0,0,1.181,3.15h3.44L8.079,20.056a2.757,2.757,0,1,0,3.3.422H21.7a2.756,2.756,0,1,0,3.131-.512l.272-1.195a1.181,1.181,0,0,0-1.152-1.443H10.737l-.322-1.575h14.43A1.181,1.181,0,0,0,26,14.833Z"
-                  fill="#fff"
+                  fill="#000"
                 />
               </svg>
             </NavLink>
