@@ -1,0 +1,7 @@
+<svg id="descrease-btn" xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46">
+  <path id="Icon_awesome-minus" data-name="Icon awesome-minus" d="M28.191,14.625H2.169C.971,14.625,0,15.3,0,16.136v1.511c0,.835.971,1.511,2.169,1.511H28.191c1.2,0,2.169-.677,2.169-1.511V16.136C30.36,15.3,29.389,14.625,28.191,14.625Z" transform="translate(8.061 5.527)"/>
+  <g id="Rectangle_9" data-name="Rectangle 9" fill="none" stroke="#000" stroke-width="1">
+    <rect width="46" height="46" rx="6" stroke="none"/>
+    <rect x="0.5" y="0.5" width="45" height="45" rx="5.5" fill="none"/>
+  </g>
+</svg>
