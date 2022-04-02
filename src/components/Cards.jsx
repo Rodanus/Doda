@@ -1,15 +1,16 @@
 import React from "react";
 import Card from "./Card";
+import tw, { styled } from "twin.macro";
+
+const CardsContainer = styled.div(() => tw`grid grid-cols-2 gap-12`);
 
 function Cards({ products }) {
   return (
-    <div>
+    <CardsContainer>
       {products.map(item => (
-        <div>
-          <Card item={item} />
-        </div>
+        <Card item={item} />
       ))}
-    </div>
+    </CardsContainer>
   );
 }
 
