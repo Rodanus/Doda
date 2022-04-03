@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import tw, { styled } from "twin.macro";
 import { addItemToOrderList, increaseQuantityBy } from "../store/orderList";
 import { increasePriceBy } from "../store/totalOrderPrice";
@@ -14,6 +14,8 @@ const ProductImage = styled.img(() => [tw`max-w-full w-[400px] mr-8`]);
 const ProductTitleAndPrice = styled.div(() => [tw`flex justify-between mb-14`]);
 
 const ProductTitle = styled.h1(() => [tw`text-4xl`]);
+
+const BackToShop = styled(Link)(() => [tw`inline-block mb-4`]);
 
 const ProductPrice = styled.span(() => [tw`text-4xl`]);
 
@@ -100,6 +102,7 @@ function ViewProduct() {
         <ProductTitle>{currentProduct.title}</ProductTitle>
         <ProductPrice>${currentProduct.price}</ProductPrice>
       </ProductTitleAndPrice>
+      <BackToShop to="/shop">&lt; Back to shop</BackToShop>
       <ProductMoreInfo>
         <ProductImage src={currentProduct.image} />
 
