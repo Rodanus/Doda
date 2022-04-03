@@ -44,7 +44,7 @@ function OrderListCard({ item }) {
       <div>
         <h2 className="text-xl font-bold mb-4">{item.title}</h2>
         <span className="font-bold block mb-4">
-          {totalItemPrice(item.price, item.orderedQuantity)} for each
+          {totalItemPrice(item.price, item.orderedQuantity)}
         </span>
         <div className="flex items-center gap-x-4">
           <DecreaseQuantityIcon
