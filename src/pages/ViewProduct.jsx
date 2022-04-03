@@ -19,7 +19,7 @@ const ProductPrice = styled.span(() => [tw`text-4xl`]);
 
 const ProductMoreInfo = styled.div(() => [tw`flex p-8 rounded-xl bg-white`]);
 
-const ProductDescAndQuantity = styled.div(() => [tw``]);
+const ProductDescAndQuantity = styled.div(() => [tw`self-center`]);
 
 const ProductDesc = styled.p(() => [tw`max-w-[500px] mb-12`]);
 
