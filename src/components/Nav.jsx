@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = styled.header(() => [
-  tw`container h-[80px] absolute flex justify-between z-50 left-1/2`,
+  tw`container h-[80px] fixed flex justify-between z-50 left-1/2`,
   css`
     transform: translateX(-50%);
   `
