@@ -7,8 +7,6 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 import "./App.css";
-import Contact from "./pages/Contact";
-import About from "./pages/About";
 import Nav from "./components/Nav";
 import ViewProduct from "./pages/ViewProduct";
 
@@ -35,8 +33,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="shop" element={<Shop />} />
         <Route path="shop/:id" element={<ViewProduct />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
         <Route path="shop/order-list" element={<OrderList />} />
       </Routes>
       {state?.backgroundLocation && (

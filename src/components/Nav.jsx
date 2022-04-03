@@ -11,7 +11,7 @@ const Header = styled.header(() => [
 const Navbar = styled.nav(() => [
   tw`m-auto w-full flex justify-between items-center`
 ]);
-const NavLinks = styled.ul(() => [tw`flex justify-between w-1/2`]);
+const NavLinks = styled.ul(() => [tw`flex gap-x-20`]);
 const NavLinkContainer = styled.li(() => []);
 const NavLink = styled(Link)(() => [tw`capitalize text-black text-lg`]);
 
@@ -24,14 +24,6 @@ function Nav() {
     {
       title: "shop",
       path: "shop"
-    },
-    {
-      title: "about",
-      path: "about"
-    },
-    {
-      title: "contact us",
-      path: "contact"
     }
   ];
 
