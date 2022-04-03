@@ -12,8 +12,6 @@ import ViewProduct from "./pages/ViewProduct";
 
 let firstRender = false;
 function App() {
-  const location = useLocation();
-  const state = location.state;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,17 +27,12 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Routes location={state?.backgroundLocation || location}>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="shop" element={<Shop />} />
         <Route path="shop/:id" element={<ViewProduct />} />
         <Route path="shop/order-list" element={<OrderList />} />
       </Routes>
-      {state?.backgroundLocation && (
-        <Routes>
-          <Route path="shop/order-list" element={<OrderList />} />
-        </Routes>
-      )}
     </div>
   );
 }
