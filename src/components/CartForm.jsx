@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import tw, { styled } from "twin.macro";
 
 const InputContainer = styled.div(() => [tw`flex flex-col mb-6`]);
@@ -13,10 +14,15 @@ function CartForm() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
 
+  const { itemsOrdered } = useSelector(s => s.orderList);
+
   const [showOrderSentMessage, setShowOrderSentMessage] = useState(false);
+
+  const [showCartIsEmptyMessage, setShowCartIsEmptyMessage] = useState(false);
 
   const onCloseMessageBtnClick = () => {
     setShowOrderSentMessage(false);
+    setShowCartIsEmptyMessage(false);
   };
 
   const handleFirstNameChange = e => {
@@ -37,15 +43,39 @@ function CartForm() {
 
   const handleOnSubmit = e => {
     e.preventDefault();
-    setShowOrderSentMessage(true);
-    setFirstName("");
-    setSurname("");
-    setAddress("");
-    setCity("");
+    if (itemsOrdered.length > 0) {
+      setShowOrderSentMessage(true);
+      setFirstName("");
+      setSurname("");
+      setAddress("");
+      setCity("");
+    } else {
+      setShowCartIsEmptyMessage(true);
+    }
   };
 
   return (
     <div className="w-1/2">
+      {showCartIsEmptyMessage && (
+        <>
+          <div
+            onClick={onCloseMessageBtnClick}
+            className="fixed z-50 w-screen h-screen bg-black opacity-30 inset-1/2 -translate-x-1/2 -translate-y-1/2"
+          ></div>
+          <div className="fixed text-xl flex flex-col p-8 rounded-2xl justify-between z-50 inset-1/2 w-80 h-min -translate-x-1/2 -translate-y-1/2 bg-white">
+            <p className="mb-8 w-full">
+              Please make sure that you add at least one product to the cart
+              first.
+            </p>
+            <button
+              className="bg-[#0097E0] text-[#F3F3F3] hover:bg-[#007EBB] rounded-md w-24 self-center"
+              onClick={onCloseMessageBtnClick}
+            >
+              OK
+            </button>
+          </div>
+        </>
+      )}
       {showOrderSentMessage && (
         <>
           <div
