@@ -23,7 +23,7 @@ function OrderList() {
         <p className="text-3xl">Total Price: ${totalPrice}</p>
       </div>
       <div className="flex justify-between items-center">
-        <CartForm className="w-1/2" />
+        <CartForm className="w-1/2" clearOrderList={handleClearingOrderList} />
         <div className="w-1/2 flex flex-col">
           <button
             className="self-end bg-[#E73D3E] text-[#F3F3F3] hover:bg-[#C1393A] p-2 mb-8 rounded-[14px]"

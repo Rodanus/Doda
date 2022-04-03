@@ -8,7 +8,7 @@ const TextInputLabel = styled.label(() => [tw`text-3xl font-bold mb-4`]);
 
 const TextInput = styled.input(() => [tw`max-w-[300px] h-[35px] p-4`]);
 
-function CartForm() {
+function CartForm({ clearOrderList }) {
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
   const [address, setAddress] = useState("");
@@ -45,6 +45,7 @@ function CartForm() {
     e.preventDefault();
     if (itemsOrdered.length > 0) {
       setShowOrderSentMessage(true);
+      clearOrderList();
       setFirstName("");
       setSurname("");
       setAddress("");
