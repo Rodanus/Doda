@@ -8,7 +8,7 @@ function Cards({ products }) {
   return (
     <CardsContainer>
       {products.map(item => (
-        <Card item={item} />
+        <Card item={item} key={item.title} />
       ))}
     </CardsContainer>
   );

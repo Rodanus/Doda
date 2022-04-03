@@ -26,10 +26,10 @@ const ProductDesc = styled.p(() => [tw`max-w-[500px] mb-12`]);
 const OrderQuantity = styled.span(() => [tw`select-none mx-4`]);
 
 const IncreaseQuantityIcon = styled(IncreaseIcon)(() => [
-  tw`cursor-pointer select-none mr-4`
+  tw`cursor-pointer w-[40px] select-none mr-4`
 ]);
 const DecreaseQuantityIcon = styled(DecreaseIcon)(() => [
-  tw`cursor-pointer select-none`
+  tw`cursor-pointer w-[40px] select-none`
 ]);
 
 const AddProductButton = styled.button(() => [
@@ -83,6 +83,7 @@ function ViewProduct() {
         addItemToOrderList({
           id: productId,
           category: productCategory,
+          image: currentProduct.image,
           title: productName,
           price: productPrice,
           orderedQuantity: orderAmount

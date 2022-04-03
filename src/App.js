@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
-import OrderList from "./components/OrderList";
+import OrderList from "./pages/OrderList";
 import { addProducts } from "./store/products";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";

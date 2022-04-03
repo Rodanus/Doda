@@ -3,9 +3,9 @@ import OrderListCard from "./OrderListCard";
 
 function OrderListCards({ itemsOrdered }) {
   return (
-    <div>
+    <div className="w-full">
       {itemsOrdered.map(item => (
-        <OrderListCard item={item} />
+        <OrderListCard item={item} key={item.title} />
       ))}
     </div>
   );

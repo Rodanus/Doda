@@ -5,8 +5,16 @@ import {
   decreaseQuantity,
   removeItemFromOrderList
 } from "../store/orderList";
+import tw, { styled } from "twin.macro";
 import { decreasePriceBy, increasePriceBy } from "../store/totalOrderPrice";
-
+import { ReactComponent as IncreaseIcon } from "../icons/increase-btn.svg";
+import { ReactComponent as DecreaseIcon } from "../icons/descrease-btn.svg";
+const IncreaseQuantityIcon = styled(IncreaseIcon)(() => [
+  tw`cursor-pointer w-[30px] select-none mr-4`
+]);
+const DecreaseQuantityIcon = styled(DecreaseIcon)(() => [
+  tw`cursor-pointer w-[30px] select-none`
+]);
 function OrderListCard({ item }) {
   const dispatch = useDispatch();
 
@@ -16,7 +24,7 @@ function OrderListCard({ item }) {
   };
 
   const handleDecreaseQuantity = (productId, productPrice, orderedQuantity) => {
-    if (orderedQuantity > 0) {
+    if (orderedQuantity > 1) {
       dispatch(decreaseQuantity(productId));
       dispatch(decreasePriceBy(productPrice));
     }
@@ -31,31 +39,37 @@ function OrderListCard({ item }) {
     `$${+(price * quantity).toFixed(2)}`;
 
   return (
-    <div>
-      <p>{item.title}</p>
-      <p>{item.orderedQuantity}</p>
-      <p>{totalItemPrice(item.price, item.orderedQuantity)}</p>
-      <button onClick={() => handleIncreaseQuantity(item.id, item.price)}>
-        Increase
-      </button>
-      <button
-        onClick={() =>
-          handleDecreaseQuantity(item.id, item.price, item.orderedQuantity)
-        }
-      >
-        decrease
-      </button>
-      <button
-        onClick={() =>
-          handleRemovingItemFromOrderList(
-            item.id,
-            item.orderedQuantity,
-            item.price
-          )
-        }
-      >
-        remove
-      </button>
+    <div className="flex gap-x-8 bg-white p-8 rounded-2xl mb-8">
+      <img src={item.image} alt="" className="w-24" />
+      <div>
+        <h2 className="text-xl font-bold mb-4">{item.title}</h2>
+        <span className="font-bold block mb-4">
+          {totalItemPrice(item.price, item.orderedQuantity)} for each
+        </span>
+        <div className="flex items-center gap-x-4">
+          <DecreaseQuantityIcon
+            onClick={() =>
+              handleDecreaseQuantity(item.id, item.price, item.orderedQuantity)
+            }
+          />
+          <span className="text-2xl">{item.orderedQuantity}</span>
+          <IncreaseQuantityIcon
+            onClick={() => handleIncreaseQuantity(item.id, item.price)}
+          />
+          <button
+            className="bg-[#E73D3E] text-[#F3F3F3] hover:bg-[#C1393A] p-2 rounded-[14px]"
+            onClick={() =>
+              handleRemovingItemFromOrderList(
+                item.id,
+                item.orderedQuantity,
+                item.price
+              )
+            }
+          >
+            remove
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
